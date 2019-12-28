@@ -72,8 +72,8 @@ def exportHere():
         cv2.imshow('Nhan dien khuon mat', img)
         cv2.waitKey(1);
 
-        # Biến đếm > 19 thì dừng lưu ảnh và đóng mọi luồng. ( Lưu 20 tấm mỗi lần. )
-        if(i>19):
+        # Biến đếm > 49 thì dừng lưu ảnh và đóng mọi luồng. ( Lưu 50 tấm mỗi lần. )
+        if(i>49):
             cap.release()
             cv2.destroyAllWindows()
             break;
