@@ -3,12 +3,9 @@ import os
 import pickle, sqlite3
 import cv2
 from PIL import Image
-#--------------------------------------------------------------------
+
 # CODE KET NOI DU LIEU NHAN DIEN HINH ANH KHUON MAT
 def exportHere():
-    face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-    recognizer = cv2.face.LBPHFaceRecognizer_create()
-    recognizer.read("trainer/huanluyen.yml")
 
     def getProfile(Id):
         conn=sqlite3.connect("database.db")
@@ -21,10 +18,13 @@ def exportHere():
         conn.close()
         return profile
 
+    face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+    recognizer = cv2.face.LBPHFaceRecognizer_create()
+    recognizer.read("trainer/huanluyen.yml")
+
     cap = cv2.VideoCapture(0)
     font = cv2.FONT_HERSHEY_SIMPLEX 
     while True:
-        #comment the next line and make sure the image being read is names img when using imread
         ret, img = cap.read()
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
         faces = face_cascade.detectMultiScale(gray, 1.3, 5)
